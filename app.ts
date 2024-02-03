@@ -17,4 +17,4 @@ app.get("/", (req: Request, res: Response) => {
 /* Telling the server to use the routes in the ProductRoutes file. */
 app.use("/api/v1/user", UserRoutes);
 
-module.exports = app;
+module.exports = app; 
