@@ -3,6 +3,7 @@ import { Response, Request } from "express";
 const express = require("express");
 
 const UserRoutes = require("./routes/user.route");
+const CharityRoutes = require("./routes/charity.route");
 
 const app = express();
 
@@ -16,5 +17,5 @@ app.get("/", (req: Request, res: Response) => {
 
 /* Telling the server to use the routes in the ProductRoutes file. */
 app.use("/api/v1/user", UserRoutes);
-
+app.use("/api/v1/charity", CharityRoutes);
 module.exports = app; 

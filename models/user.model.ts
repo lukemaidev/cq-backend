@@ -28,3 +28,5 @@ const userSchema = new Schema(
 
 //export default mongoose.model("Name of table in database", Schema);
 module.exports = mongoose.model("User", userSchema);
+
+export {};

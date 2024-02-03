@@ -1,27 +1,47 @@
 import { Request, Response } from "express";
 
-const User = require("../models/user.model");   
+const User = require("../models/user.model");
 
-const getAllUsers = async (req : Request, res : Response) => {
-    try {
-        const allUsers = await User.find({});
-        res.status(200).json({allUsers})
-        
-    } catch (error: any) {
-        res.status(500).json({ error: error.message });
-        
-    }
+const getAllUsers = async (req: Request, res: Response) => {
+  try {
+    const allUsers = await User.find({});
+    res.status(200).json({ allUsers });
+  } catch (error: any) {
+    res.status(500).json({ error: error.message });
+  }
 };
 
-const createUser = async (req : Request, res : Response) => {
-    try {
-        const user = new User(req.body);
-        await user.save();
-        res.status(201).json({ user });
-    } catch (error: any) {
-        res.status(500).json({ error: error.message });
-    }
+const createUser = async (req: Request, res: Response) => {
+  try {
+    const user = new User(req.body);
+    await user.save();
+    res.status(201).json({ user });
+  } catch (error: any) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+const updateUser = async (req: Request, res: Response) => {
+  try {
+    const updatedUser = await User.findByIdAndUpdate(req.body._id, req.body, {
+      new: true,
+    });
+    res.status(200).json({ updatedUser });
+  } catch (error: any) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+const deleteUser = async (req: Request, res: Response) => {
+  try {
+    const deletedUser = await User.findByIdAndDelete(req.body.id);
+    res.status(200).json({ deletedUser });
+  } catch (error: any) {
+    res.status(500).json({ error: error.message });
+  }
 };
 
 exports.getAllUsers = getAllUsers;
 exports.createUser = createUser;
+exports.updateUser = updateUser;
+exports.deleteUser = deleteUser;
