@@ -40,9 +40,8 @@ describe("POST /api/v1/charity", () => {
 describe("UPDATE /api/v1/charity", () => {
   it("should return 200 OK", async () => {
     const charity = {
-      _id: "65be17e2882d4755add1ba28",
-      name: "test",
-      email: "updated@gmail.com"
+      _id: "65be3cdfca508c483308b868",
+      name: "Cooler Charity"
     }
     const res = await request(app).patch("/api/v1/charity").send(charity);
     expect(res.status).toBe(200);

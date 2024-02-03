@@ -4,6 +4,7 @@ const express = require("express");
 
 const UserRoutes = require("./routes/user.route");
 const CharityRoutes = require("./routes/charity.route");
+const ResolutionRoutes = require("./routes/resolution.route");
 
 const app = express();
 
@@ -18,4 +19,5 @@ app.get("/", (req: Request, res: Response) => {
 /* Telling the server to use the routes in the ProductRoutes file. */
 app.use("/api/v1/user", UserRoutes);
 app.use("/api/v1/charity", CharityRoutes);
+app.use("/api/v1/resolution", ResolutionRoutes);
 module.exports = app; 

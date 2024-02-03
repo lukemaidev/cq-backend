@@ -11,6 +11,15 @@ const getAllCharities = async (req: Request, res: Response) => {
   }
 };
 
+const getCharityById = async (req: Request, res: Response) => {
+  try {
+    const charity = await Charity.findById(req.params.id);
+    res.status(200).json({ charity });
+  } catch (error: any) {
+    res.status(500).json({ error: error.message });
+  }
+}
+
 const createCharity = async (req: Request, res: Response) => {
   try {
     const charity = new Charity(req.body);
@@ -42,6 +51,7 @@ const deleteCharity = async (req: Request, res: Response) => {
 };
 
 exports.getAllCharities = getAllCharities;
+exports.getCharityById = getCharityById;
 exports.createCharity = createCharity;
 exports.updateCharity = updateCharity;
 exports.deleteCharity = deleteCharity;
